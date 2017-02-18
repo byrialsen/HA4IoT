@@ -1,0 +1,2 @@
+MainPackage=C:\Source\HA4IoT\Controllers\HA4IoT.Controller.Byrialsen.Taverna\bin\ARM\Debug\HA4IoT.Controller.Byrialsen.Taverna_1.0.1.0_ARM_Debug.appx
+SymbolPackage=C:\Source\HA4IoT\Controllers\HA4IoT.Controller.Byrialsen.Taverna\AppPackages\HA4IoT.Controller.Byrialsen.Taverna_1.0.1.0_Debug_Test\HA4IoT.Controller.Byrialsen.Taverna_1.0.1.0_ARM_Debug.appxsym
