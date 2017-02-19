@@ -15,3 +15,5 @@ HA4IoT.sdf
 HA4IoT.VC.db
 *.user
 Homepage/Properties/PublishProfiles/HA4IoTHomepage - Web Deploy.pubxml
+/App/LocalDeployInfo.dat
+/Controllers/HA4IoT.Controller.Byrialsen.Taverna/AppPackages/HA4IoT.Controller.Byrialsen.Taverna_1.0.2.0_Debug_Test

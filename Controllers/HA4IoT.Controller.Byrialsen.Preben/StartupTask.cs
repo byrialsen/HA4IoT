@@ -76,7 +76,7 @@ namespace HA4IoT.Controller.Byrialsen.Preben
             {
                 var livingRoom = _areaService.CreateArea(Room.LivingRoom);
 
-                _actuatorFactory.RegisterSocket(livingRoom, LivingRoom.Button, _pi2GpioService.GetOutput(5)).;
+                _actuatorFactory.RegisterSocket(livingRoom, LivingRoom.Button, _pi2GpioService.GetOutput(5));
 
                 _actuatorFactory.RegisterLamp(livingRoom, LivingRoom.Button, _pi2GpioService.GetOutput(5));
 
