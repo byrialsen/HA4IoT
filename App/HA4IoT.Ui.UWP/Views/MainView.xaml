@@ -6,13 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:HA4IoT.Ui.UWP.ViewModels"
+    xmlns:views="using:HA4IoT.Ui.UWP.Views"
     xmlns:t10controls="using:Template10.Controls"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    RequestedTheme="Dark">
 
     <!-- data context -->
     <Page.DataContext>
         <vm:MainViewModel />
     </Page.DataContext>
+
     <!-- content-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -40,25 +43,20 @@
             <!-- SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"-->
 
             <!-- main -->
-            <PivotItem x:Uid="pivotMain" Header="Hjem">
-                <TextBlock FontSize="48" Text="{Binding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <PivotItem x:Uid="pivotHome" Header="Hjem">
+                <TextBlock FontSize="48" Text="{x:Bind ViewModel.Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <!--<views:YesNoView />-->
             </PivotItem>
 
-            <!-- app web -->
-            <PivotItem x:Uid="pivotLikes" Header="Web">
-                <ScrollViewer>
-                    <!--<WebView x:Name="webView1" Source="http://www.contoso.com"/>-->
-                    <WebView x:Name="webView1" Source="http://192.168.1.170/App/Index.html" />
-                </ScrollViewer>
-                <!--<views:LikeView />-->
+            <PivotItem x:Uid="pivotLog" Header="Logs">
+                <views:LogView x:Name="viewLog" />
             </PivotItem>
 
-            <!-- app management web -->
-            <PivotItem x:Uid="pivotCoin" Header="Opsætning">
-                <TextBlock FontSize="48" Text="{Binding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <!--<views:FlipCoinView />-->
+            <PivotItem x:Uid="pivotSettings" Header="Indstillinger">
+                <TextBlock FontSize="48" Text="Her vises indstillinger" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </PivotItem>
+
+
         </Pivot>
 
         <!-- bottom -->

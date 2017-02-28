@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HA4IoT.Ui.UWP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace HA4IoT.Ui.UWP.Views
     /// </summary>
     public sealed partial class MainView : Page
     {
+        public MainViewModel ViewModel => this.DataContext as MainViewModel;
+
         public MainView()
         {
             this.InitializeComponent();

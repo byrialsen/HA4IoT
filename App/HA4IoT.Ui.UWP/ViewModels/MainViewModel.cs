@@ -19,5 +19,9 @@ namespace HA4IoT.Ui.UWP.ViewModels
         }
 
         #endregion Properties 
+
+        public MainViewModel()
+        {
+        }
     }
 }

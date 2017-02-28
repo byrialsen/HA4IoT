@@ -1,13 +1,18 @@
-﻿using HA4IoT.Ui.UWP.Views;
+﻿using HA4IoT.Ui.UWP.Services;
+using HA4IoT.Ui.UWP.UserControls;
+using HA4IoT.Ui.UWP.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,8 +36,14 @@ namespace HA4IoT.Ui.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += OnUnhandledException;
         }
 
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Message);
+        }
+        
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -40,10 +51,14 @@ namespace HA4IoT.Ui.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //var idleService = IdleService.CreateInstance(5);
+            //idleService.OnAliveEvent += OnAliveEventHandler;
+            //idleService.OnIdleEvent += OnIdleEventHandler;
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;
@@ -73,13 +88,25 @@ namespace HA4IoT.Ui.UWP
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainView), e.Arguments);
+                    rootFrame.Navigate(typeof(Views.MainView), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+
+            ScreenSaver.InitializeScreensaver();
         }
 
+        private void OnAliveEventHandler(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Main -> alive handler");
+        }
+
+        private void OnIdleEventHandler(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Main -> idle handler");
+        }
+                
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
